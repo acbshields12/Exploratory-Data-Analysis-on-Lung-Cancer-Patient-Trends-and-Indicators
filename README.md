@@ -64,7 +64,6 @@ lung-cancer-analysis/
 | `Survival_Months` | Integer | Months survived after diagnosis |
 | `Survived` | Yes/No | Patient outcome at end of study period |
 
-> 41 total columns. See full data dictionary in the [Analysis Report](ANALYSIS_REPORT.md).
 
 ---
 
