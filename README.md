@@ -1,4 +1,4 @@
-#Exploratory-Data-Analysis-on-Lung-Cancer-Patient-Trends-and-Indicators 🫁  
+# Exploratory-Data-Analysis-on-Lung-Cancer-Patient-Trends-and-Indicators 🫁  
 
 > An end-to-end data analytics project examining **1,500 lung cancer patients** across 6 WHO regions (2015–2025), covering data cleaning, SQL querying, Excel modeling, and Power BI dashboard design.
 
