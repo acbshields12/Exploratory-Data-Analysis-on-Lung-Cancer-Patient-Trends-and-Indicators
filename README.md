@@ -262,13 +262,13 @@ Note:  If data path breaks, re-point the source to data/lung_cancer_dataset.csv
 
 ---
 
-## 👤 About the Author
+## Author
 
-**Clark** — Aspiring Data Analyst
-**Skills:** SQL · Excel · Power BI · Python · Data Visualization
+Adriane Clark Ballesteros  
+Healthcare Data Analyst Trainee
 
-*This is a portfolio project demonstrating end-to-end analytical skills: raw data → SQL exploration → Excel modeling → interactive dashboard → written report and recommendations.*
+* 🔗 GitHub: https://github.com/acbshields12
 
 ---
 
-*Dataset: Lung Cancer Patient Records | 1,500 rows · 41 columns | 2015–2025*
+*Project built as part of a healthcare analytics portfolio. Dataset is sourced from Kaggle.com.*
