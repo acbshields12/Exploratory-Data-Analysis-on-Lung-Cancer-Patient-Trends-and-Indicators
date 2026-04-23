@@ -190,7 +190,7 @@ The workbook has 5 sheets:
 
 | Stage | Survival Rate | Avg Survival |
 |-------|-------------|-------------|
-| Stage I | ~71% | ~54 months |
+| Stage I | ~71% | ~58 months |
 | Stage II | ~50% | ~34 months |
 | Stage III | ~15% | ~18 months |
 | Stage IV | ~4% | ~7 months |
