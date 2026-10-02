@@ -259,7 +259,6 @@ Note:  If data path breaks, re-point the source to data/lung_cancer_dataset.csv
 | Microsoft Excel | 2021 / 365 | Data cleaning, formulas, pivot analysis |
 | MySQL Workbench | 8.0+ | SQL querying and analysis |
 | Power BI Desktop | Latest | Interactive 1-page dashboard |
-| Python (pandas) | 3.10+ | Initial data exploration |
 
 ---
 
