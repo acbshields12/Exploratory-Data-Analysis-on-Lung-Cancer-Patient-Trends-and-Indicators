@@ -19,16 +19,18 @@ lung-cancer-analysis/
 │
 ├── 📂 data/
 │   └── lung_cancer_dataset.csv          ← Raw source data (1,500 rows · 41 columns)
+|
+├── 📂 excel/
+│   └── lung_cancer_analysis.xlsx        ← Excel workbook (5 sheets)
+│
+├── 📂 insights/
+│   ├── dash.jpg                         ← Screenshot of the Power BI dashboard
+│
+├── 📂 powerbi/
+│   └── dash.pbix                        ← Power BI Desktop file
 │
 ├── 📂 sql/
 │   └── lung_cancer_queries.sql          ← 25+ queries across 8 sections (MySQL)
-│
-├── 📂 assets/
-│   ├── dashboard_preview.png            ← Screenshot of the Power BI dashboard
-│   └── lung_cancer_analysis.xlsx        ← Excel workbook (5 sheets)
-│
-├── 📂 pbix/
-│   └── lung_cancer_dashboard.pbix       ← Power BI Desktop file
 │
 └── README.md                            ← You are here
 ```
