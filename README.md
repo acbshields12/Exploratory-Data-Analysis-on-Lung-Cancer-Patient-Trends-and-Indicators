@@ -6,7 +6,7 @@
 
 ## 📸 Dashboard Preview
 
-![Dashboard Preview](assets/dash.jpg)
+![Dashboard Preview](insights/dash.jpg)
 
 > *Built in Power BI Desktop — 1-page interactive dashboard with slicers for Stage, Gender, and Smoking Status.*
 
