@@ -47,6 +47,67 @@ lung-cancer-analysis/
 6. What is the relationship between tumor size and cancer stage?
 
 ---
+---
+
+## 📊 Key Findings
+
+**Dataset:** 1,500 lung cancer patients diagnosed between 2015 and 2025 across 60 countries and 6 WHO regions, with 41 variables covering demographics, smoking and environmental exposure, symptoms, genetic mutations, cancer type and stage, diagnosis method, treatment, survival time (months) and survival outcome. There are no missing values or duplicate records.
+
+| Metric | Value |
+|---|---|
+| Patients | 1,500 (62.3% male, mean age 60.7) |
+| Cancer type | NSCLC 1,335 (89.0%), SCLC 165 (11.0%) |
+| Diagnosed at Stage III/IV | 708 (47.2%) |
+| Metastasis at diagnosis | 423 (28.2%) |
+| Survived (`Survived = Yes`) | 553 (36.9%) |
+| Survival time | median 26 months, mean 31.2 months |
+
+### Survival by cancer stage
+
+| Stage | Patients | Survived | Median survival (months) |
+|---|---|---|---|
+| Stage I | 436 | 71.3% | 58 |
+| Stage II | 356 | 50.0% | 34 |
+| Stage III | 351 | 14.5% | 18 |
+| Stage IV | 357 | 3.6% | 7 |
+
+- **Stage at diagnosis is the dominant factor.** Survival drops from 71.3% at Stage I to 3.6% at Stage IV, and patients with metastasis survive far less often (5.9% vs 49.0%). A model using only stage, metastasis and tumour size reaches a cross-validated ROC-AUC of 0.825, which is as good as a model using 14 clinical and lifestyle features (0.813).
+- **Smoking is linked to later diagnosis rather than to worse survival at the same stage.** Current smokers are diagnosed at Stage III/IV far more often (67.6%) than former smokers (56.1%) or never-smokers (38.2%), and their raw survival is lower (24.2% vs 42.3%). After adjusting for stage, the smoking effect disappears (odds ratio 0.95, p = 0.78).
+- **Raw treatment results mostly reflect which patients receive which treatment.** Surgery shows 65.5% survival and Chemo + Radiation 9.0%, but 77% of surgical patients are Stage I and none are Stage III/IV, while every Chemo + Radiation patient is Stage III/IV. Within a stage the differences shrink: Stage III survival is 11–27% across treatments and Stage IV is 14% or lower. After adjustment, no treatment (other than palliative care, a small group of 37 Stage IV patients) differs significantly.
+- **Low-dose CT (LDCT) screening finds cancer earlier.** 77.6% of LDCT-screened patients are Stage I (only 13.2% are Stage III/IV) and 59.8% survived, compared with 66.4% Stage III/IV and 25.9% survival for PET-detected cases. Part of this gap may be lead-time bias, and PET or biopsy may be used mainly to work up suspected advanced disease.
+- **Four symptoms signal more advanced disease.** Shortness of breath, chest pain, coughing blood and weight loss are linked to lower survival (p < 0.025) and a higher share of late-stage diagnoses (for example, 55.0% with coughing blood vs 44.8% without). Coughing, fatigue, wheezing, recurrent infections, swallowing difficulty and finger clubbing show no significant relationship with survival.
+- **SCLC is diagnosed later.** 61.2% of SCLC cases are Stage III/IV vs 45.4% for NSCLC, and survival is lower (27.9% vs 38.0%, p = 0.014). Smoking is also more common among SCLC patients (60.6% vs 31.5%).
+- **Chronic lung disease and gender show raw differences that vanish after adjustment.** Survival is 27.7% with chronic lung disease vs 39.0% without (p < 0.001), and 34.7% in men vs 40.5% in women (p = 0.029). Neither is significant once stage is accounted for.
+- **Several factors show no relationship with survival.** Age (60.5 vs 60.7 years for survivors vs non-survivors), BMI, WHO region (p = 0.63), family history (p = 0.39), exercise (p = 0.75), alcohol use (p = 0.59), occupational hazard (p = 0.74) and genetic mutation group (p = 0.06) are not significant.
+- **No improvement over time.** Annual survival rates range from 30.5% to 44.6% with no upward trend, and the share of late-stage diagnoses stays flat between 2015 and 2025.
+
+## ✅ Recommendations
+
+1. **Prioritise early detection.** Because stage drives outcomes more than any other variable, the biggest opportunity is to move diagnoses from Stage III/IV (47%) to Stage I/II. Expand LDCT screening programmes for high-risk groups.
+2. **Target screening at current and former smokers.** They are diagnosed late far more often (67.6% and 56.1% at Stage III/IV vs 38.2% for never-smokers). Combine screening with smoking-cessation support at each contact.
+3. **Do not rely on smoking history alone to define screening eligibility.** 65% of patients here never smoked, so risk-based criteria should also consider chronic lung disease, asbestos or radon exposure, occupational hazards and family history. Validate this on real-world data first.
+4. **Shorten the time from symptoms to diagnosis.** Treat shortness of breath, chest pain, coughing blood and weight loss as red flags that trigger fast-track imaging, rather than waiting for symptoms to progress.
+5. **Match treatment to stage and compare like with like.** Evaluate treatments within each stage (and with adjustment for age, comorbidity and performance status) rather than comparing raw survival rates across treatments.
+6. **Improve care for SCLC and metastatic patients.** They have the worst outcomes and are mostly diagnosed late, so they should be a priority for earlier referral, clinical trials and palliative-care integration.
+7. **Evaluate genetic testing and targeted therapy more closely.** Mutation groups differ somewhat (for example RET 60% and EGFR 40.5% vs KRAS 29.8% survived), but groups are small and the differences are not significant. Collect more data before drawing conclusions.
+8. **Fix the survival-outcome definition and add follow-up data.** Record vital status date, cause of death and follow-up end date, so survival can be analysed properly (see Limitations).
+9. **Use survival-analysis methods in follow-up work.** Kaplan–Meier curves and Cox regression handle time-to-event data better than a yes/no outcome.
+
+## 🏁 Conclusion
+
+In this dataset, **when the cancer is found matters far more than who the patient is.** Stage at diagnosis explains most of the difference in survival, and the apparent effects of smoking, treatment type, gender and chronic lung disease largely disappear once stage is taken into account. Smokers and patients with certain symptoms are diagnosed later, and LDCT screening finds cancer much earlier. The most effective strategy suggested by the data is therefore earlier detection through targeted screening and faster symptom work-up, combined with stage-appropriate treatment and better support for SCLC and metastatic disease.
+
+### ⚠️ Limitations
+
+- **Association, not causation.** The data is observational. Treatment, diagnosis method and stage are interlinked, so treatment and screening effects cannot be separated reliably, and screening results may be inflated by lead-time bias.
+- **The survival outcome is unclear.** `Survived` and `Survival_Months` are not fully consistent: 58 patients marked "No" lived more than 60 months, and 6 marked "Yes" lived under 6 months. The definition (for example, alive at a fixed point or at the end of follow-up) should be documented.
+- **Survival times exceed possible follow-up for many patients.** For 320 patients, the recorded survival is longer than the time between diagnosis and today, which suggests the data is simulated or the survival time is projected.
+- **The data looks synthetic.** 65% of patients never smoked and 62% are male, which is not typical of real lung cancer populations, and stage and survival values are very cleanly separated. Findings should be treated as illustrative, not as clinical evidence.
+- **Missing clinical context.** There is no performance status, comorbidity score, treatment dates or line of therapy, so differences in case mix cannot be fully controlled for.
+- **Small subgroups.** Several mutation, treatment and region groups have fewer than 100 patients, so their rates are unstable.
+
+---
+---
 
 ## 📊 Dataset — `/data`
 
@@ -184,41 +245,6 @@ The workbook has 5 sheets:
 | `=IFERROR(formula, "N/A")` | Catch and handle divide errors |
 | `=SUM(range)` | Totals rows in summary tables |
 
----
-
-## 🔍 Key Findings
-
-### Finding 1 — Early Detection Saves Lives
-
-| Stage | Survival Rate | Avg Survival |
-|-------|-------------|-------------|
-| Stage I | ~71% | ~58 months |
-| Stage II | ~50% | ~34 months |
-| Stage III | ~15% | ~18 months |
-| Stage IV | ~4% | ~7 months |
-
-Stage I patients survive at **4–5× the rate** of Stage IV patients. The biggest lever in lung cancer outcomes is simply catching it earlier.
-
-### Finding 2 — Surgery Produces the Best Outcomes
-Surgery (alone or combined with chemo) leads to the highest average survival months. Palliative care — typically administered at Stage IV — has the lowest, reflecting the stage of diagnosis rather than treatment failure.
-
-### Finding 3 — 65% of Patients Never Smoked
-The majority of patients in this dataset never smoked. Secondhand smoke, high air pollution, genetic mutations (KRAS, EGFR), and occupational hazards are significant contributors that are often underemphasized in public health messaging.
-
-### Finding 4 — Western Pacific Has the Highest Patient Burden
-The Western Pacific region (China, Japan, Singapore) accounts for the largest share of diagnoses, consistent with elevated smoking rates and poor air quality in major cities in the region.
-
----
-
-## 💡 Recommendations
-
-1. **Implement LDCT screening** for high-risk adults aged 50+ (current and former smokers)
-2. **Rethink messaging** — 65% of patients never smoked; air quality and genetics need more attention
-3. **Fast-track surgical assessment** at time of diagnosis — the treatment window closes fast
-4. **Expand Asia-Pacific oncology resources** — the Western Pacific carries a disproportionate burden
-5. **Add genetic mutation testing** (KRAS, EGFR) at diagnosis to guide targeted therapy eligibility
-
----
 
 ## 🚀 How to Use This Project
 
